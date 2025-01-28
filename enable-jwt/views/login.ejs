@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>URL Shortener - Login</title>
+    <style>
+      :root {
+        --primary: #6366f1;
+        --primary-hover: #4f46e5;
+        --background: #f8fafc;
+        --surface: #ffffff;
+        --text: #1e293b;
+        --text-secondary: #64748b;
+        --border: #e2e8f0;
+        --error: #dc2626;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: var(--background);
+        color: var(--text);
+        line-height: 1.5;
+        min-height: 100vh;
+        padding: 2rem 1rem;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+        letter-spacing: -0.05em;
+      }
+
+      .card {
+        background: var(--surface);
+        border-radius: 1rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        border: 1px solid var(--border);
+        padding: 2rem;
+        max-width: 28rem;
+        margin: 0 auto;
+      }
+
+      .form-heading {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+
+      .form-description {
+        color: var(--text-secondary);
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      .input-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .input-field {
+        width: 100%;
+        padding: 0.875rem 1.25rem;
+        border: 2px solid var(--border);
+        border-radius: 0.75rem;
+        font-size: 1rem;
+        transition: all 0.2s ease;
+      }
+
+      .input-field:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+      }
+
+      .btn-primary {
+        width: 100%;
+        background: var(--primary);
+        color: white;
+        padding: 1rem;
+        border: none;
+        border-radius: 0.75rem;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .btn-primary:hover {
+        background: var(--primary-hover);
+        transform: translateY(-1px);
+      }
+
+      .auth-link {
+        text-align: center;
+        margin-top: 1.5rem;
+        color: var(--text-secondary);
+      }
+
+      .auth-link a {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .auth-link a:hover {
+        text-decoration: underline;
+      }
+
+      .error {
+        color: var(--error);
+        font-size: 0.875rem;
+        text-align: center;
+        margin: 1rem 0;
+        min-height: 2rem;
+      }
+
+      @media (max-width: 640px) {
+        .title {
+          font-size: 2rem;
+        }
+        
+        .card {
+          padding: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1 class="title">URL Shortener</h1>
+      </header>
+
+      <div class="card">
+        <form action="/user/login" method="post">
+          <h2 class="form-heading">Welcome Back</h2>
+          <p class="form-description">Sign in to manage your shortened links</p>
+
+          <% if (locals.message) { %>
+            <div class="error"><%= locals.message %></div>
+          <% } %>
+
+          <div class="input-group">
+            <input
+              type="email"
+              class="input-field"
+              id="email"
+              name="email"
+              required
+              placeholder="Email address"
+            />
+          </div>
+
+          <div class="input-group">
+            <input
+              type="password"
+              class="input-field"
+              id="password"
+              name="password"
+              required
+              placeholder="Password"
+            />
+          </div>
+
+          <button type="submit" class="btn-primary">Sign In</button>
+
+          <div class="auth-link">
+            Don't have an account? <a href="/signup">Register here</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
